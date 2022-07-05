@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "carpetieeaddition.mixins",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "FluidBlockMixin",
+    "GuardianEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
