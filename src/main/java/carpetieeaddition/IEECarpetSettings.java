@@ -18,4 +18,11 @@ public class IEECarpetSettings {
             category = {IEE, FEATURE}
     )
     public static double renewableHeart_of_the_sea = 0.0D;
+
+    @Rule(desc = "禁用烟花的随机动量", category = {IEE, FEATURE})
+    public static boolean FireworkNoRandomMovement = false;
+    @Rule(desc = "禁用烟花的随机生命周期", category = {IEE, FEATURE})
+    public static boolean FireworkNoRandomLifetime = false;
+    @Rule(desc = "禁用烟花爆炸（无限生命周期）", category = {IEE, FEATURE})
+    public static boolean FireworkNoExplode = false;
 }
