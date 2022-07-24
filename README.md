@@ -6,6 +6,7 @@
 这是一个 [Carpet mod](https://github.com/gnembon/fabric-carpet) 
 (fabric-carpet) 的扩展 mod，包含了不少~~NotVanilla的~~有意思的特性
 
+
 ###本mod仍在beta版本，相关功能未完善，仍有bug谨慎使用！！
 
 ###Beta Version DO NOT USE!!
