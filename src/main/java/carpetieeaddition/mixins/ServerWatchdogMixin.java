@@ -45,7 +45,7 @@ public abstract class ServerWatchdogMixin implements Runnable {
             if (n > this.maxTickTime) {
                 if (IEECarpetSettings.DisableWatchdog){
                     IEECarpetServer.LOGGER.fatal("A single server tick took {} seconds (should be max {})", String.format(Locale.ROOT, "%.2f", (float)n / 1000.0F), String.format(Locale.ROOT, "%.2f", 0.05F));
-                    IEECarpetServer.LOGGER.fatal("Although considering it to be crashed,but IEECarpetSettings.DisableWatchdog is on, server will keep running.");
+                    IEECarpetServer.LOGGER.fatal("Although considering it to be crashed,but since IEECarpetSettings.DisableWatchdog is on, server will keep running.");
                 }
                 else {
                     IEECarpetServer.LOGGER.fatal("A single server tick took {} seconds (should be max {})", String.format(Locale.ROOT, "%.2f", (float)n / 1000.0F), String.format(Locale.ROOT, "%.2f", 0.05F));

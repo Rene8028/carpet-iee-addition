@@ -25,6 +25,6 @@ public class IEECarpetSettings {
     public static boolean FireworkNoRandomLifetime = false;
     @Rule(desc = "禁用烟花爆炸（无限生命周期）", category = {IEE, FEATURE})
     public static boolean FireworkNoExplode = false;
-    @Rule(desc = "禁用ServerWatchdog看门狗", category = {IEE, FEATURE})
+    @Rule(desc = "禁用ServerWatchdog看门狗", category = {IEE})
     public static boolean DisableWatchdog = false;
 }
