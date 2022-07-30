@@ -6,7 +6,8 @@
   "mixins": [
     "FluidBlockMixin",
     "GuardianEntityMixin",
-    "FireworkRocketEntityMixin"
+    "FireworkRocketEntityMixin",
+    "ServerWatchdogMixin"
   ],
   "injectors": {
     "defaultRequire": 1

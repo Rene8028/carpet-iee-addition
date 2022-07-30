@@ -15,7 +15,7 @@ public class IEECarpetSettings {
             extra = "Set it to 0 to disable",
             options = {"0", "0.2", "1"},
             strict = false,
-            category = {IEE, FEATURE}
+            category = {SURVIVAL, IEE, FEATURE}
     )
     public static double renewableHeart_of_the_sea = 0.0D;
 
@@ -25,4 +25,6 @@ public class IEECarpetSettings {
     public static boolean FireworkNoRandomLifetime = false;
     @Rule(desc = "禁用烟花爆炸（无限生命周期）", category = {IEE, FEATURE})
     public static boolean FireworkNoExplode = false;
+    @Rule(desc = "禁用ServerWatchdog看门狗", category = {IEE, FEATURE})
+    public static boolean DisableWatchdog = false;
 }
