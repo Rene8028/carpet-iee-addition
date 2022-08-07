@@ -9,9 +9,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class IEECarpetServer implements CarpetExtension {
-	public static final String fancyName = "Carpet TIS Addition";
+	public static final String fancyName = "Carpet IEE Addition";
 	public static final Logger LOGGER = LogManager.getLogger(fancyName);
 	public static MinecraftServer minecraft_server;
+
+	public static MinecraftServer getServer() {
+		return minecraft_server;
+	}
 
 	public static void noop() { }
 
@@ -24,7 +28,10 @@ public class IEECarpetServer implements CarpetExtension {
 		CarpetServer.settingsManager.parseSettingsClass(IEECarpetSettings.class);
 	}
 
-
+	@Override
+	public void onServerLoaded(MinecraftServer server) {
+		minecraft_server = server;
+	}
 
 	@Override
 	public String version() {

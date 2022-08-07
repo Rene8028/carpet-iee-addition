@@ -4,6 +4,7 @@ import carpetieeaddition.IEECarpetServer;
 import carpetieeaddition.IEECarpetSettings;
 import com.google.common.collect.Streams;
 import net.minecraft.Bootstrap;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.dedicated.DedicatedServerWatchdog;
 import net.minecraft.server.dedicated.MinecraftDedicatedServer;
 import net.minecraft.util.Util;
@@ -38,8 +39,9 @@ public abstract class ServerWatchdogMixin implements Runnable {
 
     @Override
     public void run(){
-        while(IEECarpetServer.minecraft_server.isRunning()) {
-            long l = IEECarpetServer.minecraft_server.getTimeReference();
+        MinecraftServer minecraftserver = IEECarpetServer.getServer();
+        while(minecraftserver.isRunning()) {
+            long l = minecraftserver.getTimeReference();
             long m = Util.getMeasuringTimeMs();
             long n = m - l;
             if (n > this.maxTickTime) {
@@ -59,7 +61,7 @@ public abstract class ServerWatchdogMixin implements Runnable {
 
                     for(int var13 = 0; var13 < var12; ++var13) {
                         ThreadInfo threadInfo = var11[var13];
-                        if (threadInfo.getThreadId() == IEECarpetServer.minecraft_server.getThread().getId()) {
+                        if (threadInfo.getThreadId() == minecraftserver.getThread().getId()) {
                             error.setStackTrace(threadInfo.getStackTrace());
                         }
 
@@ -68,21 +70,21 @@ public abstract class ServerWatchdogMixin implements Runnable {
                     }
 
                     CrashReport crashReport = new CrashReport("Watching Server", error);
-                    IEECarpetServer.minecraft_server.addSystemDetails(crashReport.getSystemDetailsSection());
+                    minecraftserver.addSystemDetails(crashReport.getSystemDetailsSection());
                     CrashReportSection crashReportSection = crashReport.addElement("Thread Dump");
                     crashReportSection.add("Threads", stringBuilder);
                     CrashReportSection crashReportSection2 = crashReport.addElement("Performance stats");
                     crashReportSection2.add("Random tick rate", () -> {
-                        return ((GameRules.IntRule)IEECarpetServer.minecraft_server.getSaveProperties().getGameRules().get(GameRules.RANDOM_TICK_SPEED)).toString();
+                        return ((GameRules.IntRule)minecraftserver.getSaveProperties().getGameRules().get(GameRules.RANDOM_TICK_SPEED)).toString();
                     });
                     crashReportSection2.add("Level stats", () -> {
-                        return (String)Streams.stream(IEECarpetServer.minecraft_server.getWorlds()).map((serverWorld) -> {
+                        return (String)Streams.stream(minecraftserver.getWorlds()).map((serverWorld) -> {
                             RegistryKey var10000 = serverWorld.getRegistryKey();
                             return var10000 + ": " + serverWorld.getDebugString();
                         }).collect(Collectors.joining(",\n"));
                     });
                     Bootstrap.println("Crash report:\n" + crashReport.asString());
-                    File var10002 = new File(IEECarpetServer.minecraft_server.getRunDirectory(), "crash-reports");
+                    File var10002 = new File(minecraftserver.getRunDirectory(), "crash-reports");
                     SimpleDateFormat var10003 = new SimpleDateFormat("yyyy-MM-dd_HH.mm.ss");
                     Date var10004 = new Date();
                     File file = new File(var10002, "crash-" + var10003.format(var10004) + "-server.txt");

@@ -27,4 +27,12 @@ public class IEECarpetSettings {
     public static boolean FireworkNoExplode = false;
     @Rule(desc = "禁用ServerWatchdog看门狗", category = {IEE})
     public static boolean DisableWatchdog = false;
+    @Rule(
+            name = "commandFreecam",
+            desc = "改进的freecame指令",
+            category = {IEE, COMMAND},
+            options = {"true", "false", "ops", "0", "1", "2", "3", "4"}
+    )
+    public static String commandFreecam = "true";
+    //Enables /freecam command to toggle your camera mode.
 }
