@@ -6,11 +6,12 @@
   "name": "IEE's Carpet Tweaks",
   "description": "Adds a few features to the survival",
   "authors": [
-    "Rene8028"
+    "Rene8028",
+    "IEE Server"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/Rene8028",
+    "sources": "https://github.com/Rene8028/carpet-iee-addition"
   },
 
   "license": "CC0-1.0",

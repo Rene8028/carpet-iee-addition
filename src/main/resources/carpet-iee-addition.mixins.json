@@ -2,11 +2,10 @@
   "required": true,
   "minVersion": "0.8",
   "package": "carpetieeaddition.mixins",
-  "compatibilityLevel": "JAVA_16",
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "FluidBlockMixin",
     "GuardianEntityMixin",
-    "FireworkRocketEntityMixin",
+    "LiquidBlockMixin",
     "ServerWatchdogMixin"
   ],
   "injectors": {

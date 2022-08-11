@@ -9,8 +9,8 @@ repositories {
 	}
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_7
-targetCompatibility = JavaVersion.VERSION_1_7
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
 version = project.minecraft_version+'-'+project.mod_version
@@ -23,11 +23,12 @@ dependencies {
 //	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	minecraft("com.mojang:minecraft:${project.minecraft_version}")
 	mappings(loom.officialMojangMappings())
+//	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modApi("net.fabricmc:fabric-loader:${project.loader_version}")
 
 	// Required library
 	modApi("carpet:fabric-carpet:${project.minecraft_version}-${project.carpet_core_version}")
-	modApi("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}")
+//	modApi("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}")
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	// modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
@@ -51,7 +52,7 @@ tasks.withType(JavaCompile).configureEach {
 	it.options.encoding = "UTF-8"
 
 	// Minecraft 1.17 (21w19a) upwards uses Java 16.
-	it.options.release = 16
+//	it.options.release = 17
 }
 
 java {

@@ -14,6 +14,7 @@ import java.util.UUID;
 
 public class IEECarpetServer implements CarpetExtension {
 	public static final String fancyName = "Carpet IEE Addition";
+	public static final String prefix = "[IEE]";
 	public static final Logger LOGGER = LogManager.getLogger(fancyName);
 	public static MinecraftServer minecraft_server;
 	private static IEECarpetServer instance;

@@ -1,20 +1,21 @@
 package carpetieeaddition;
 
-import carpetieeaddition.utils.FreeCameraUtil;
+//import carpetieeaddition.utils.FreeCameraUtil;
+import carpet.CarpetExtension;
 import net.fabricmc.api.ModInitializer;
 import com.mojang.brigadier.CommandDispatcher;
-import net.minecraft.command.CommandSource;
+import net.minecraft.commands.CommandSourceStack;
 import carpetieeaddition.commands.*;
 import net.minecraft.server.MinecraftServer;
 
-public class IEECarpetMod implements ModInitializer {
+public class IEECarpetMod implements CarpetExtension , ModInitializer {
     @Override
     public void onInitialize() {
         IEECarpetServer.noop();
     }
 
-//    @Override
-//    public void registerCommands(CommandDispatcher<CommandSource> dispatcher){
-//        FreecamCommand.register(dispatcher);
-//    }
+    @Override
+    public void registerCommands(CommandDispatcher<CommandSourceStack> dispatcher){
+        FreecamCommand.register(dispatcher);
+    }
 }
