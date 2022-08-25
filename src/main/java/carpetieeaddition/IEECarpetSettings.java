@@ -23,22 +23,18 @@ public class IEECarpetSettings {
     )
     public static double renewableHeart_of_the_sea = 0.0D;
 
-    @Rule(desc = "禁用烟花的随机动量", category = {IEE, FEATURE})
-    public static boolean FireworkNoRandomMovement = false;
-    @Rule(desc = "禁用烟花的随机生命周期", category = {IEE, FEATURE})
-    public static boolean FireworkNoRandomLifetime = false;
-    @Rule(desc = "禁用烟花爆炸（无限生命周期）", category = {IEE, FEATURE})
-    public static boolean FireworkNoExplode = false;
     @Rule(desc = "禁用ServerWatchdog看门狗", category = {IEE})
     public static boolean DisableWatchdog = false;
+
     @Rule(
             name = "commandFreecam",
             desc = "改进的freecame指令",
             category = {IEE, COMMAND},
             options = {"true", "false", "ops", "0", "1", "2", "3", "4"}
     )
-    public static String commandFreecam = "true";
+    public static String commandFreecam = "false";
     //Enables /freecam command to toggle your camera mode.
+
     @Rule(
             desc = "海绵再生-在地狱停留一定时间的守卫者转变成远古守卫者(自定义时间)",
             extra = "设置为-1来禁用，单位：刻(tick)",
@@ -47,4 +43,12 @@ public class IEECarpetSettings {
             category = {SURVIVAL, IEE, FEATURE}
     )
     public static int renewableSponge = -1;
+
+    @Rule(
+            name = "commandplayercraft",
+            desc = "Carpet /player 假人 合成物品",
+            category = {IEE, COMMAND},
+            options = {"true", "false", "ops", "0", "1", "2", "3", "4"}
+    )
+    public static String commandplayercraft = "true";
 }

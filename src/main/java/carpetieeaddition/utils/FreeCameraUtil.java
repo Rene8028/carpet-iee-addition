@@ -1,15 +1,25 @@
 package carpetieeaddition.utils;
 
+import carpet.script.api.WorldAccess;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import com.mojang.realmsclient.util.LevelType;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.level.GameType;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import carpetieeaddition.IEECarpetServer;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -73,7 +83,7 @@ public class FreeCameraUtil {
         float xRot = jsonObject.has("xRot") ? jsonObject.get("xRot").getAsFloat() : 0;
         float yRot = jsonObject.has("yRot") ? jsonObject.get("yRot").getAsFloat() : 0;
         boolean isFreecam = jsonObject.has("isFreecam") && jsonObject.get("isFreecam").getAsBoolean();
-//        return new FreeCameraData(gameType, dimension != null ? dimension : , new Vec3(x, y, z), xRot, yRot, isFreecam);
+//        return new FreeCameraData(gameType, dimension != null ? dimension : Level.OVERWORLD, new Vec3(x, y, z), xRot, yRot, isFreecam);
         return null;
     }
 

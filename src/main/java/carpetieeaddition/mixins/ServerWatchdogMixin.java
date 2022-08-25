@@ -39,10 +39,10 @@ public abstract class ServerWatchdogMixin implements Runnable {
 
     private long maxTickTime;
     private final DedicatedServer server;
-    Logger LOGGER = IEECarpetServer.getLogger();
+    Logger WDLOGGER = IEECarpetServer.getLogger();
 
-    public ServerWatchdogMixin(DedicatedServer server) {
-        this.server = server;
+    public ServerWatchdogMixin(DedicatedServer dedicatedserver) {
+        this.server = dedicatedserver;
         this.maxTickTime = server.getMaxTickLength();
     }
 
@@ -54,13 +54,13 @@ public abstract class ServerWatchdogMixin implements Runnable {
             long n = m - l;
             if (n > this.maxTickTime) {
                 if (IEECarpetSettings.DisableWatchdog){
-                    LOGGER.fatal("A single server tick took {} seconds (should be max {})", String.format(Locale.ROOT, "%.2f", (float)n / 1000.0F), String.format(Locale.ROOT, "%.2f", 0.05F));
-                    LOGGER.fatal("Although considering it to be crashed,but since IEECarpetSettings.DisableWatchdog is on, server will keep running.");
+                    WDLOGGER.fatal("A single server tick took {} seconds (should be max {})", String.format(Locale.ROOT, "%.2f", (float)n / 1000.0F), String.format(Locale.ROOT, "%.2f", 0.05F));
+                    WDLOGGER.fatal("Although considering it to be crashed,but since IEECarpetSettings.DisableWatchdog is on, server will keep running.");
                     MessageUtil.sendServerinfoLog("阻止服务器看门狗崩溃成功！");
                 }
                 else {
-                    LOGGER.fatal("A single server tick took {} seconds (should be max {})", String.format(Locale.ROOT, "%.2f", (float)n / 1000.0F), String.format(Locale.ROOT, "%.2f", 0.05F));
-                    LOGGER.fatal("Considering it to be crashed, server will forcibly shutdown.");
+                    WDLOGGER.fatal("A single server tick took {} seconds (should be max {})", String.format(Locale.ROOT, "%.2f", (float)n / 1000.0F), String.format(Locale.ROOT, "%.2f", 0.05F));
+                    WDLOGGER.fatal("Considering it to be crashed, server will forcibly shutdown.");
                     ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
                     ThreadInfo[] threadInfos = threadMXBean.dumpAllThreads(true, true);
                     StringBuilder stringBuilder = new StringBuilder();
@@ -98,9 +98,9 @@ public abstract class ServerWatchdogMixin implements Runnable {
                     Date var10004 = new Date();
                     File file = new File(var10002, "crash-" + var10003.format(var10004) + "-server.txt");
                     if (crashReport.saveToFile(file)) {
-                        LOGGER.error("This crash report has been saved to: {}", file.getAbsolutePath());
+                        WDLOGGER.error("This crash report has been saved to: {}", file.getAbsolutePath());
                     } else {
-                        LOGGER.error("We were unable to save this crash report to disk.");
+                        WDLOGGER.error("We were unable to save this crash report to disk.");
                     }
 
                     this.exit();
