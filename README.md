@@ -10,6 +10,9 @@
 
 ### Beta Version DO NOT USE!!
 
+### 本项目已经废弃，后续不再更新维护！！
+
+
 本mod还没完善，欢迎各位大佬指教
 
 TODO:
